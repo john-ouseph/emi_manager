@@ -21,7 +21,6 @@ class LoansController < ApplicationController
 
   # POST /loans or /loans.json
   def create
-    binding.pry
     @loan = Loan.new(loan_params)
 
     respond_to do |format|
