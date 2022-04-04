@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  loan_amt: 1.5
+  monthly_emi: 1.5
+  total_loan_period: 1
+  total_payment: 1.5
+  monthly_payment_date: 2022-04-04
+  monthly_emi_changable: false
+
+two:
+  loan_amt: 1.5
+  monthly_emi: 1.5
+  total_loan_period: 1
+  total_payment: 1.5
+  monthly_payment_date: 2022-04-04
+  monthly_emi_changable: false
