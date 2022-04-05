@@ -1,0 +1,2 @@
+module EmiPaymentsHelper
+end

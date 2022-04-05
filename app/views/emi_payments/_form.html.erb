@@ -1,0 +1,32 @@
+<%= form_with(model: emi_payment) do |form| %>
+  <% if emi_payment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(emi_payment.errors.count, "error") %> prohibited this emi_payment from being saved:</h2>
+
+      <ul>
+        <% emi_payment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :paid_emi_amt, style: "display: block" %>
+    <%= form.text_field :paid_emi_amt %>
+  </div>
+
+  <div>
+    <%= form.label :emi_amt, style: "display: block" %>
+    <%= form.text_field :emi_amt %>
+  </div>
+
+  <div>
+    <%= form.label :principal_amt, style: "display: block" %>
+    <%= form.text_field :principal_amt %>
+  </div>
+  <%= form.hidden_field :loan_id, value: @loan.id %>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

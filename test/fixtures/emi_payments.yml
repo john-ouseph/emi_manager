@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  paid_emi_amt: 1.5
+  emi_amt: 1.5
+  principal_amt: 1.5
+
+two:
+  paid_emi_amt: 1.5
+  emi_amt: 1.5
+  principal_amt: 1.5

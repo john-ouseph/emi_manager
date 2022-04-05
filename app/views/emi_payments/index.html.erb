@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Emi payments</h1>
+
+<div id="emi_payments">
+  <% @emi_payments.each do |emi_payment| %>
+    <%= render emi_payment %>
+  <% end %>
+</div>
+
+<%= link_to "Back", loans_path %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @emi_payment %>
+
+<div>
+  <%= link_to "Edit this emi payment", edit_emi_payment_path(@emi_payment) %> |
+  <%= link_to "Back to emi payments", emi_payments_path %>
+
+  <%= button_to "Destroy this emi payment", @emi_payment, method: :delete %>
+</div>
