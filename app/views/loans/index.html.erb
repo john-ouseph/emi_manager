@@ -1,9 +1,8 @@
-<p style="color: green"><%= notice %></p>
-  <div class="container mt-3">
-    <div class="d-flex justify-content-between">
-      <h4>Your Loans</h4>
-      <%= link_to "Add New loan", new_loan_path%>
-    </div>
+<div class="container mt-3">
+  <div class="d-flex justify-content-between">
+    <h4>Your Loans</h4>
+    <%= link_to "Add New loan", new_loan_path%>
+  </div>
   </div>
   <div class="row mt-1">
     <% @loans.each do |loan| %>
