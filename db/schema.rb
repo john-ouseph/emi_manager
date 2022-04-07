@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_04_170058) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_06_214928) do
   create_table "emi_payments", force: :cascade do |t|
     t.integer "loan_id"
     t.float "paid_emi_amt"
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_04_170058) do
     t.float "remaining_principlal_amt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "emi_payments_count", default: 0
   end
 
 end

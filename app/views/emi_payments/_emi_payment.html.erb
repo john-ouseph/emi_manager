@@ -1,17 +1,20 @@
-<div id="<%= dom_id emi_payment %>">
-  <p>
-    <strong>Paid emi amt:</strong>
-    <%= emi_payment.paid_emi_amt %>
-  </p>
-
-  <p>
-    <strong>Emi amt:</strong>
-    <%= emi_payment.emi_amt %>
-  </p>
-
-  <p>
-    <strong>Principal amt:</strong>
-    <%= emi_payment.principal_amt %>
-  </p>
-
+<div class="card">
+  <div class="row">
+    <div class="col-md-2">
+      <%= emi_payment.paid_emi_amt %>
+    </div>
+    <div class="col-md-2">
+      <%= emi_payment.emi_amt %>
+    </div>
+    <div class="col-md-2">
+      <%= emi_payment.principal_amt %>
+    </div>
+    <div class="col-md-2">
+      <%= emi_payment.loan.loan_amt %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to "Edit this emi payment", edit_loan_emi_payment_path(@loan, emi_payment),class: 'btn btn-primary' %>
+      <%= button_to "Destroy this loan", [@loan, emi_payment], method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+    </div>
+  </div>
 </div>

@@ -1,6 +1,7 @@
 class EmiPaymentsController < ApplicationController
+  before_action :get_loan
   before_action :set_emi_payment, only: %i[ show edit update destroy ]
-  before_action :set_loan, only: %i[index new]
+  after_action :update_loan_details, only: %i[ create update ]
 
   # GET /emi_payments or /emi_payments.json
   def index
@@ -9,12 +10,12 @@ class EmiPaymentsController < ApplicationController
 
   # GET /emi_payments/1 or /emi_payments/1.json
   def show
-    binding.pry
+
   end
 
   # GET /emi_payments/new
   def new
-    @emi_payment = EmiPayment.new
+    @emi_payment = @loan.emi_payments.new
   end
 
   # GET /emi_payments/1/edit
@@ -24,11 +25,11 @@ class EmiPaymentsController < ApplicationController
 
   # POST /emi_payments or /emi_payments.json
   def create
-    @emi_payment = EmiPayment.new(emi_payment_params)
+    @emi_payment = @loan.emi_payments.new(emi_payment_attributes)
 
     respond_to do |format|
       if @emi_payment.save
-        format.html { redirect_to loans_url, notice: "Emi payed successfully for this month." }
+        format.html { redirect_to loan_emi_payments_path(@loan), notice: "Emi payed successfully for this month." }
         format.json { render :new, status: :created, location: @emi_payment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,8 +41,8 @@ class EmiPaymentsController < ApplicationController
   # PATCH/PUT /emi_payments/1 or /emi_payments/1.json
   def update
     respond_to do |format|
-      if @emi_payment.update(emi_payment_params)
-        format.html { redirect_to emi_payment_url(@emi_payment), notice: "Emi payment was successfully updated." }
+      if @emi_payment.update(emi_payment_attributes)
+        format.html { redirect_to loan_emi_payment_path(@loan), notice: "Emi payment was successfully updated." }
         format.json { render :show, status: :ok, location: @emi_payment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +56,7 @@ class EmiPaymentsController < ApplicationController
     @emi_payment.destroy
 
     respond_to do |format|
-      format.html { redirect_to emi_payments_url, notice: "Emi payment was successfully destroyed." }
+      format.html { redirect_to loan_emi_payments_url(@loan), notice: "Emi payment was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -63,13 +64,30 @@ class EmiPaymentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_emi_payment
-      @emi_payment = EmiPayment.find(params[:id])
+      @emi_payment = @loan.emi_payments.find(params[:id])
     end
 
-    def set_loan
-      @loan = Loan.find(params[:loan_id] || @emi_payment.loan_id)
+    def get_loan
+      @loan = Loan.find(params[:loan_id])
     end
 
+    def emi_payment_attributes
+      emi_payment_attributes = emi_payment_params
+      emi_payment_attributes[:intrest_amt] = emi_payment_attributes[:paid_emi_amt].to_f - emi_payment_attributes[:principal_amt].to_f
+      emi_payment_attributes[:paid_date] = Date.today
+      emi_payment_attributes
+    end
+
+    def update_loan_details
+      total_paid_amt = @loan.total_paid_amt.nil? ? 0 : @loan.total_paid_amt
+      total_paid_principal = @loan.total_paid_principal.nil? ? 0 : @loan.total_paid_principal
+      totalr_paid_intrest = @loan.totalr_paid_intrest.nil? ? 0 : @loan.totalr_paid_intrest
+      loan_attributes = {total_paid_amt:  total_paid_amt += @emi_payment.paid_emi_amt,
+                         total_paid_principal: total_paid_principal += @emi_payment.principal_amt,
+                         totalr_paid_intrest: totalr_paid_intrest += @emi_payment.intrest_amt}
+      loan_attributes.merge!({remaining_total_amt: @loan.total_payment - loan_attributes[:total_paid_amt].to_f})
+      @loan.update(loan_attributes)
+    end
     # Only allow a list of trusted parameters through.
     def emi_payment_params
       params.require(:emi_payment).permit(:paid_emi_amt, :emi_amt, :principal_amt, :loan_id)

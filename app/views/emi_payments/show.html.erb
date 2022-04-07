@@ -3,8 +3,5 @@
 <%= render @emi_payment %>
 
 <div>
-  <%= link_to "Edit this emi payment", edit_emi_payment_path(@emi_payment) %> |
-  <%= link_to "Back to emi payments", emi_payments_path %>
-
-  <%= button_to "Destroy this emi payment", @emi_payment, method: :delete %>
+  <%= link_to "Edit this emi payment", edit_loan_emi_payment_path(@loan, @emi_payment), class: 'btn btn-success' %>
 </div>
