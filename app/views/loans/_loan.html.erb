@@ -31,7 +31,7 @@
               <%= link_to "Payment history", loan_emi_payments_path(loan) %>
             </div>
             <div class="badge ms-2 c-details">
-              <%= button_to "Delete", @loan, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+              <%= button_to "Delete", loan, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
             </div>
           </div>
           <div class="badge"> <%= link_to "Pay this loan", new_loan_emi_payment_path(loan), class: "btn btn-primary" %> </div>

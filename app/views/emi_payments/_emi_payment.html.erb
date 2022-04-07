@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-4">
       <%= link_to "Edit this emi payment", edit_loan_emi_payment_path(@loan, emi_payment),class: 'btn btn-primary' %>
-      <%= button_to "Destroy this loan", [@loan, emi_payment], method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+      <%= button_to "Delete", [@loan, emi_payment], method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
     </div>
   </div>
 </div>
