@@ -1,9 +1,11 @@
-<h1>New emi payment</h1>
-
-<%= render "form", emi_payment: @emi_payment %>
-
-<br>
-
-<div>
-  <%= link_to "Back to emi payments", loans_path(@loan) %>
+<div class="card mt-5">
+  <div class="card-header text-white bg-primary">
+    <h3>Emi Payment</h3>
+  </div>
+  <div class="card-body">
+    <%= render "form", emi_payment: @emi_payment %>
+  </div>
+  <div class="card-footer">
+    <%= render 'shared/back_to_loans_btn' %>
+  </div>
 </div>

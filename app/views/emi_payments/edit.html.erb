@@ -1,10 +1,11 @@
-<h1>Editing emi payment</h1>
-
-<%= render "form", emi_payment: @emi_payment %>
-
-<br>
-
-<div>
-  <%= link_to "Show this emi payment", [@loan, @emi_payment] %> |
-  <%= link_to "Back to emi payments", loan_emi_payments_path(@loan) %>
+<div class="card mt-5">
+  <div class="card-header text-white bg-primary">
+    <h3>Edit Emi payment</h3>
+  </div>
+  <div class="card-body">
+    <%= render "form", emi_payment: @emi_payment %>
+  </div>
+  <div class="card-footer">
+    <%= link_to "Back to emi payments", loan_emi_payments_path(@loan), class: "btn btn-outline-primary bi bi-arrow-left-circle" %>
+  </div>
 </div>

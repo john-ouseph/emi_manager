@@ -13,8 +13,8 @@
         </div>
         <div class="col-md-3">
           <div class="d-flex justify-content-between">
-          <%= link_to '', edit_loan_path(loan), class: "btn bi bi-pencil",data: {toggle: 'tooltip'}, 'data-bs-placement': "bottom", 'title': "Edit Loan" %>
-          <%= button_to "", loan, method: :delete, data: {confirm: 'Are you sure?',  toggle: 'tooltip'}, class: "btn bi bi-basket", 'data-bs-placement': "bottom", 'title': "Delete Loan"%>
+          <%= link_to '', edit_loan_path(loan), class: "btn text-primary bi bi-pencil", data: {toggle: 'tooltip'}, 'data-bs-placement': "bottom", 'title': "Edit Loan" %>
+          <%= button_to "", loan, method: :delete, data: {confirm: 'Are you sure?',  toggle: 'tooltip'}, class: "btn text-primary bi bi-basket", 'data-bs-placement': "bottom", 'title': "Delete Loan"%>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
         </div>
         <div class="d-flex justify-content-between mt-2">
           <div>Total paid: <b class="text-primary"><%= total_paid_amt %></b></div>
-          <div>No. paid Emis: <b class="text-primary"><%= loan.emi_payments_count %></b></div>
+          <div>Paid Emis: <b class="text-primary"><%= loan.emi_payments_count %></b></div>
         </div>
       </div>
     </div>
@@ -41,8 +41,8 @@
       </div>
     </div>
     <div class="d-flex justify-content-between mt-3">
-      <%= link_to "Payment history", loan_emi_payments_path(loan) %>
       <%= link_to "Pay this loan", new_loan_emi_payment_path(loan), class: "btn btn-primary" %>
+      <%= link_to " Payment history", loan_emi_payments_path(loan), class: 'btn text-primary bi bi-clipboard-check'  if loan.emi_payments_count != 0 %>
     </div>
   </div>
 </div>

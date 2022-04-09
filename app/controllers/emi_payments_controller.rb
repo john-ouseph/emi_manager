@@ -29,7 +29,7 @@ class EmiPaymentsController < ApplicationController
 
     respond_to do |format|
       if @emi_payment.save
-        format.html { redirect_to loan_emi_payments_path(@loan), notice: "Emi payed successfully for this month." }
+        format.html { redirect_to loans_path(@loan), notice: "Emi payed successfully for this month." }
         format.json { render :new, status: :created, location: @emi_payment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class EmiPaymentsController < ApplicationController
   def update
     respond_to do |format|
       if @emi_payment.update(emi_payment_attributes)
-        format.html { redirect_to loan_emi_payment_path(@loan), notice: "Emi payment was successfully updated." }
+        format.html { redirect_to loan_emi_payments_path(@loan), notice: "Emi payment was successfully updated." }
         format.json { render :show, status: :ok, location: @emi_payment }
       else
         format.html { render :edit, status: :unprocessable_entity }

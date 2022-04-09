@@ -2,8 +2,7 @@
 <%= render @loan %>
 
 <div>
-  <%= link_to "Edit this loan", edit_loan_path(@loan) %> |
-  <%= link_to "Back to loans", loans_path %>
-
+  <%= link_to "Edit this loan", edit_loan_path(@loan) %>
   <%= button_to "Destroy this loan", @loan, method: :delete %>
+  <%= render 'shared/back_to_loans_btn' %>
 </div>

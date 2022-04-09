@@ -1,19 +1,19 @@
 <div class="card">
   <div class="row">
-    <div class="col-md-2">
-      <%= emi_payment.paid_emi_amt %>
-    </div>
-    <div class="col-md-2">
+    <div class="col-md-2 text-center">
       <%= emi_payment.emi_amt %>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 text-center">
+      <%= emi_payment.paid_emi_amt %>
+    </div>
+    <div class="col-md-2 text-center">
       <%= emi_payment.principal_amt %>
     </div>
-    <div class="col-md-2">
-      <%= emi_payment.loan.loan_amt %>
+    <div class="col-md-2 text-center">
+      <%= emi_payment.intrest_amt %>
     </div>
-    <div class="col-md-2">
-      <%= emi_payment.loan.loan_amt %>
+    <div class="col-md-2 text-center">
+      <%= emi_payment.loan.total_payment %>
     </div>
     <div class="col-md-2">
       <div class="d-flex justify-content-center">

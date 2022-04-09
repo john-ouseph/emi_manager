@@ -1,27 +1,28 @@
-<h1>Emi payments</h1>
+<h1>Emi Payments</h1>
 
 <div class="card">
   <div class="row">
-    <div class="col-md-3">
-      <strong>Paid emi amt:</strong>
+    <div class="col-md-2 text-center">
+      <strong class="text-primary">Emi</strong>
     </div>
-    <div class="col-md-3">
-      <strong>Emi amt:</strong>
+    <div class="col-md-2 text-center">
+      <strong class="text-primary">Paid Emi</strong>
     </div>
-    <div class="col-md-3">
-      <strong>Principal amt:</strong>
+    <div class="col-md-2 text-center">
+      <strong class="text-primary">Principal</strong>
     </div>
-    <div class="col-md-3">
-      <strong>Options</strong>
+    <div class="col-md-2 text-center">
+      <strong class="text-primary">Interest</strong>
+    </div>
+    <div class="col-md-2 text-center">
+      <strong class="text-primary">Total Loan</strong>
+    </div>
+    <div class="col-md-2 text-center">
+      <strong class="text-primary">Options</strong>
     </div>
   </div>
 </div>
     <% @emi_payments.each do |emi_payment| %>
       <%= render emi_payment %>
     <% end %>
-
-<div class="row mt-3">
-  <div class="col-md-2">
-    <%= link_to "Back", loans_path, class: "btn btn-primary" %>
-  </div>
-</div>
+<%= render 'shared/back_to_loans_btn' %>
